@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     const graduate = await Graduate.findById(req.params.id);
-  
+    
     if (!graduate) return res.status(404).send('The graduate with the given ID was not found.');
   
     res.send(graduate);
