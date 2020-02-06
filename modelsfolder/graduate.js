@@ -19,7 +19,7 @@ const Graduate = mongoose.model('Graduate', new mongoose.Schema({
     bio: {
         type: String, 
         required: true, 
-        minlength: 20, 
+        minlength: 10, 
         maxlength: 1000
     }
 })); 
@@ -29,7 +29,7 @@ function validateGraduate(graduate) {
         name: Joi.string().required(), 
         email: Joi.string().min(5).max(255).required().email(),
         dateOfGraduation: Joi.string().required(),
-        bio: Joi.string().min(20).max(1000).required()
+        bio: Joi.string().min(10).max(1000).required()
     }
     return Joi.validate(graduate, schema);
 }
