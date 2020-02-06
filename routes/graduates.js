@@ -1,5 +1,5 @@
+const {Graduate, validate} = require('../modelsfolder/graduate'); 
 const express = require('express'); 
-const {Graduate} = require('../modelsfolder/alumni'); 
 const router = express.Router(); 
 const mongoose = require('mongoose');
 
@@ -12,7 +12,13 @@ router.post('/', async (req, res) => {
     const { error } = validate(req.body); 
     if (error) return res.status(400).send(error.details[0].message);
   
-    let graduate = new Graduate({ name: req.body.name });
+    let graduate = new Graduate({ 
+        name: req.body.name,
+        email: req.body.email, 
+        dateOfGraduation: req.body.dateOfGraduation,
+        bio: req.body.bio 
+    });
+
     graduate = await graduate.save();
     
     res.send(graduate);
