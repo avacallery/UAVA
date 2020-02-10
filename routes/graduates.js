@@ -3,6 +3,11 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
+
+router.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + 'index.html')); 
+}); 
+
 router.get('/', async (req, res) => {
     const graduates = await Graduate.find().sort('name');
     res.send(graduates);
@@ -10,7 +15,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     const graduate = await Graduate.findById(req.params.id);
-    
+
     if (!graduate) return res.status(404).send('The graduate with the given ID was not found.');
   
     res.send(graduate);
