@@ -2,16 +2,16 @@ const { Graduate, validate } = require('../modelsfolder/graduate');
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-
+const path = require('path'); 
 
 router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + 'index.html')); 
+    res.sendFile(path.join(__dirname + '/public/index.html')); 
 }); 
 
-router.get('/', async (req, res) => {
-    const graduates = await Graduate.find().sort('name');
-    res.send(graduates);
-});
+// router.get('/', async (req, res) => {
+//     const graduates = await Graduate.find().sort('name');
+//     res.send(graduates);
+// });
 
 router.get('/:id', async (req, res) => {
     const graduate = await Graduate.findById(req.params.id);

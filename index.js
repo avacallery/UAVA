@@ -13,7 +13,10 @@ mongoose.connect(
 
 app.use(express.json());
 app.use('/api/graduates', graduates);
-app.use(express.static('public')); 
+// app.use(express.static('public')); 
+
+// let text1 = document.getElementById('title');
+// console.log(text1); 
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
